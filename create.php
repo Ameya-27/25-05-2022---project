@@ -11,6 +11,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     $My_Team = "MY TEAM";
     $AllEmployee_link = "allEmployee.php";
     $MyTeam_link = "admin_myteam.php";
+    $Parameter = "PARAMETER";
+    $Parameter_link = "parameter/view_para.php";
     //include "../master/db_conn.php";
     include "master/pre-header.php";
     include "master/header.php";

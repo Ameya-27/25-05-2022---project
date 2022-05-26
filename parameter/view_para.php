@@ -129,13 +129,13 @@ include "../master/breadcrumbs.php";
 <div class="p-3">
     <?php include 'para_list.php';
     if (mysqli_num_rows($res) > 0) { ?>
-        <table class="table" style="width: 32rem;">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+        <table id="table" class="table" style="width: 32rem;">
             <thead>
                 <tr>
                     <th scope="col">Parameter Id</th>
                     <th scope="col">Parameter Title</th>
                     <th scope="col">Parameter Description</th>
-
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -165,8 +165,14 @@ include "../master/breadcrumbs.php";
         </table>
     <?php } ?>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $('#table').DataTable();
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('.editbtn').on('click', function() {

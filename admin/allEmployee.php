@@ -31,7 +31,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
 
     ?>
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">-->
 
 
     <div class="container d-flex align-items-center" style="min-height: 30vh">
@@ -43,8 +43,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                 <div class="d-flex justify-content-end">
                     <a class="btn btn-primary" href="../create.php">Add new</a>
                 </div>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
-                <table id="table" class="table table-xl " style="width: 32rem;" data-show-toggle="false">
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+                <table id="table" class="table table-xl" style="width: 40rem;" data-show-toggle="false">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -98,15 +98,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                         } ?>
                     </tbody>
                 </table>
-
             <?php } ?>
         </div>
     </div>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
     <script>
-        $(document).ready(function() {
+        jQuery(document).ready(function($) {
             $('#table').DataTable();
-
         });
     </script>
     <script>

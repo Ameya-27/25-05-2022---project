@@ -1,24 +1,23 @@
 <?php
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
-    $page_title = "create";
+    $page_title = "admin_team";
     $Dashboard = "ADMIN";
     $Department = "DEPARTMENT";
     $Employee = "EMPLOYEE";
-    $Dashboard_link = "admin/admin-dashboard.php";
-    $Department_link = "department/create_dept.php";
+    $Dashboard_link = "admin-dashboard.php";
+    $Department_link = "../department/create_dept.php";
     $All_Employee = "ALL EMPLOYEES";
     $My_Team = "MY TEAM";
-    $AllEmployee_link = "allEmployee.php";
-    $MyTeam_link = "admin_myteam.php";
+    $AllEmployee_link = "../admin/allEmployee.php";
+    $MyTeam_link = "../admin/admin_myteam.php";
     $Parameter = "PARAMETER";
     $Parameter_link = "../parameter/view_para.php";
-    //include "../master/db_conn.php";
+    include "../master/db_conn.php";
     include "../master/pre-header.php";
     include "../master/header.php";
     include "../master/navbar_admin.php";
     include "../master/breadcrumbs.php";
-    include "../master/db_conn.php";
 ?>
 
     <!DOCTYPE html>
@@ -36,7 +35,41 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
 
         <!-- Core css -->
         <link href="assets/css/app.min.css" rel="stylesheet">
+        <style>
+            .slidecontainer {
+                width: 100%;
+            }
 
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 15px;
+                border-radius: 5px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #04AA6D;
+                cursor: pointer;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #04AA6D;
+                cursor: pointer;
+            }
+        </style>
     </head>
 
     <body>
@@ -50,7 +83,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                                     <div class="card-body">
                                         <div class="d-flex align-items-center justify-content-between m-b-30">
                                             <img class="img-fluid" alt="" src="assets/images/logo/logo.png">
-                                            <h2 class="m-b-0">$form_id</h2>
+                                            <h2 class="m-b-0">
+                                                <?php
+                                                $sql = "SELECT form_id FROM form_master WHERE is_deleted=0";
+                                                $result = mysqli_query($conn, $sql);
+                                                while ($row = $result->fetch_assoc()) :
+                                                ?>
+                                                    <?php echo $row['form_id']; ?>
+                                                <?php
+                                                endwhile;
+                                                ?>
+                                            </h2>
                                         </div>
                                         <form action="insert.php" method="POST">
                                             <?php if (isset($_GET['error'])) { ?>
@@ -87,6 +130,25 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                                                     ?>
                                                 </select>
                                             </div>
+                                            <!---------------------------Range Slider start------------------------------>
+                                            <h6>Rating</h6>
+
+                                            <div class="slidecontainer">
+                                                <input type="range" min="1" max="100" class="slider" id="myRange">
+                                                <p>Value: <span id="demo"></span></p>
+                                            </div>
+
+                                            <script>
+                                                var slider = document.getElementById("myRange");
+                                                var output = document.getElementById("demo");
+                                                output.innerHTML = slider.value;
+
+                                                slider.oninput = function() {
+                                                    output.innerHTML = this.value;
+                                                }
+                                            </script>
+                                            <!----------------------------Range Slider end --------------------------------------------------------->
+
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1" for="employee">Employee</label>
                                                 <select class="form-control" id="employee" name="employee">

@@ -36,7 +36,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                 if (mysqli_num_rows($res) > 0) { ?>
 
                     <h1 class="display-4 fs-1">Members</h1>
-                    <table class="table" style="width: 32rem;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+                    <table id="table" class="table" style="width: 32rem;">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -66,6 +67,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                 <?php } ?>
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+        <script>
+            jQuery(document).ready(function($) {
+                $('#table').DataTable();
+            });
+        </script>
     </body>
 
     </html>
