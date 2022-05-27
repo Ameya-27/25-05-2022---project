@@ -15,35 +15,23 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     $Parameter_link = "../parameter/view_para.php";
     include "../master/db_conn.php";
     include "../master/pre-header.php";
-?>
-
-    <?php
-    include "../master/close_header.php";
-    ?>
-
-
-    <?php
-
     include "../master/close_header.php";
     include "../master/header.php";
     include "../master/navbar_admin.php";
     include "../master/breadcrumbs.php";
-
     ?>
-
     <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">-->
-
-
     <div class="container d-flex align-items-center" style="min-height: 30vh">
         <div class="p-3">
             <?php include '../master/members.php';
             if (mysqli_num_rows($res) > 0) { ?>
 
                 <h1 class="display-4 fs-1">Members</h1>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
                 <div class="d-flex justify-content-end">
                     <a class="btn btn-primary" href="../create.php">Add new</a>
                 </div>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+
                 <table id="table" class="table table-xl" style="width: 40rem;" data-show-toggle="false">
                     <thead>
                         <tr>
@@ -56,6 +44,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                             <th scope="col">Manager Name</th>
                             <th scope="col" style="display:none">Department id</th>
                             <th scope="col">Department Name</th>
+                            <th scope="col">Action</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -98,16 +87,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                         } ?>
                     </tbody>
                 </table>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+                <script>
+                    jQuery(document).ready(function($) {
+                        $('#table').DataTable();
+                    });
+                </script>
             <?php } ?>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
-    <script>
-        jQuery(document).ready(function($) {
-            $('#table').DataTable();
-        });
-    </script>
+
     <script>
         $(document).ready(function() {
 

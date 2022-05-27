@@ -126,96 +126,99 @@ include "../master/breadcrumbs.php";
 </div>
 
 <!-- ################################################ delete task form end#####################################################################-->
-<div class="p-3">
-    <?php include 'para_list.php';
-    if (mysqli_num_rows($res) > 0) { ?>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
-        <table id="table" class="table" style="width: 32rem;">
-            <thead>
-                <tr>
-                    <th scope="col">Parameter Id</th>
-                    <th scope="col">Parameter Title</th>
-                    <th scope="col">Parameter Description</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                //$query = "SELECT * from dept_master";
-                //set array
-                //$array = array();
-                $i = 1;
-                while ($rows = mysqli_fetch_assoc($res)) {
-                    $array[] = $rows;
-                ?>
+<div class="container d-flex  align-items-center" style="min-height: 30vh">
+    <div class="p-3">
+        <?php include 'para_list.php';
+        if (mysqli_num_rows($res) > 0) { ?>
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+            <table id="table" class="table" style="width: 32rem;">
+                <thead>
                     <tr>
-                        <td><?= $rows['para_id'] ?></td>
-                        <td><?= $rows['para_title'] ?></td>
-                        <td><?= $rows['para_description'] ?></td>
-                        <td>
-                            <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#paraeditModal">EDIT</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#deletemodal">DELETE</button>
-                        </td>
+                        <th scope="col">Parameter Id</th>
+                        <th scope="col">Parameter Title</th>
+                        <th scope="col">Parameter Description</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Action</th>
                     </tr>
-                <?php $i++;
-                } ?>
-            </tbody>
-        </table>
-    <?php } ?>
+                </thead>
+                <tbody>
+                    <?php
+                    //$query = "SELECT * from dept_master";
+                    //set array
+                    //$array = array();
+                    $i = 1;
+                    while ($rows = mysqli_fetch_assoc($res)) {
+                        $array[] = $rows;
+                    ?>
+                        <tr>
+                            <td><?= $rows['para_id'] ?></td>
+                            <td><?= $rows['para_title'] ?></td>
+                            <td><?= $rows['para_description'] ?></td>
+                            <td>
+                                <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#paraeditModal">EDIT</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#deletemodal">DELETE</button>
+                            </td>
+                        </tr>
+                    <?php $i++;
+                    } ?>
+                </tbody>
+            </table>
+        <?php } ?>
+    </div>
 </div>
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
-<script>
-    jQuery(document).ready(function($) {
-        $('#table').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('.editbtn').on('click', function() {
-            $('#paraeditmodal').modal('show');
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#table').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.editbtn').on('click', function() {
+                $('#paraeditmodal').modal('show');
 
-            $tr = $(this).closest('tr');
+                $tr = $(this).closest('tr');
 
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
 
-            console.log(data);
+                console.log(data);
 
-            $('#update_para_id').val(data[0]);
-            $('#update_para_title').val(data[1]);
-            $('#update_para_description').val(data[2]);
+                $('#update_para_id').val(data[0]);
+                $('#update_para_title').val(data[1]);
+                $('#update_para_description').val(data[2]);
+
+            });
 
         });
+    </script>
+    <script>
+        $(document).ready(function() {
 
-    });
-</script>
-<script>
-    $(document).ready(function() {
+            $('.deletebtn').on('click', function() {
 
-        $('.deletebtn').on('click', function() {
+                $('#deletemodal').modal('show');
 
-            $('#deletemodal').modal('show');
+                $tr = $(this).closest('tr');
 
-            $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
 
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
+                console.log(data);
 
-            console.log(data);
+                $('#delete_id').val(data[0]);
 
-            $('#delete_id').val(data[0]);
-
+            });
         });
-    });
-</script>
+    </script>
 
-<?php
-include "../master/footer.php";
-include "../master/after-footer.php";
-?>
+    <?php
+    include "../master/footer.php";
+    include "../master/after-footer.php";
+    ?>

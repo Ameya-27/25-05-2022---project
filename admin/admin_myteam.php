@@ -15,6 +15,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     $Parameter_link = "../parameter/view_para.php";
     include "../master/db_conn.php";
     include "../master/pre-header.php";
+    include "../master/close_header.php";
     include "../master/header.php";
     include "../master/navbar_admin.php";
     include "../master/breadcrumbs.php";
@@ -24,9 +25,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     $sql = "SELECT * FROM user_master where is_deleted = 0 AND manager_id = '$id' ORDER BY user_master_id ASC"; //where is_delete==0
     $res = mysqli_query($conn, $sql);
     ?>
-    <html>
 
-    <body>
         <div class="container d-flex  align-items-center" style="min-height: 30vh">
             <div class="p-3">
                 <?php
@@ -74,9 +73,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                 $('#table').DataTable();
             });
         </script>
-    </body>
-
-    </html>
+   
 <?php
     // content end
     include "../master/footer.php";
