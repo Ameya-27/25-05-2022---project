@@ -5,7 +5,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     $Dashboard = "MANAGER";
     $Dashboard_link = "manager-dashboard.php";
     $My_Evaluation = "My Evaluation";
-    $MyEvaluation_link = "";
+    $MyEvaluation_link = "../evaluation_form/view_manager_task.php";
     $My_Team = "MY TEAM";
     $MyTeam_link = "manager_myteam.php";
     include "../master/db_conn.php";
@@ -14,9 +14,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
     include "../master/navbar_manager.php";
     include "../master/breadcrumbs.php";
 ?>
-    <html>
-
-    <body>
+    
         <div class="p-3">
             <?php $id = $_SESSION['user_master_id'];
             $query = "SELECT * FROM user_master where is_deleted = 0 AND manager_id = '$id' ORDER BY user_master_id ASC"; //where is_delete==0
@@ -50,9 +48,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                 </table>
             <?php } ?>
         </div>
-    </body>
-
-    </html>
+    
     <?php
     // content end
     include "../master/footer.php";

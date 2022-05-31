@@ -6,7 +6,7 @@ $Dashboard = "MANAGER";
 $Dashboard_link = "manager-dashboard.php";
 //$Department = "DEPARTMENT";
 $My_Evaluation = "My Evaluation";
-$MyEvaluation_link = "";
+$MyEvaluation_link = "../evaluation_form/view_manager_task.php";
 //$Department_link = "../department/create_dept.php";
 //$All_Employee = "ALL EMPLOYEES";
 $My_Team = "MY TEAM";
@@ -18,8 +18,7 @@ include "../master/header.php";
 include "../master/navbar_manager.php";
 include "../master/breadcrumbs.php";
 ?>
-<html>
-<body>
+
     <div class="p-3">
 
         <div class="card-body text-center">
@@ -29,8 +28,7 @@ include "../master/breadcrumbs.php";
             <a href="../logout.php" class="btn btn-dark">Logout</a>
         </div>
     </div>
-</body>
-</html>
+
 <?php
 // content end
 include "../master/footer.php";

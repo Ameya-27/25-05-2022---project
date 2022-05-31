@@ -11,7 +11,7 @@ if (isset($_POST['email']/* login form variable name of username filed... */)){
         return $data;
     }
     
-    
+
 
     //creating new variable and storing the values of the post method
     $username = test_input($_POST['email']);

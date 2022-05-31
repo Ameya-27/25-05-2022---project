@@ -39,7 +39,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                     <table id="table" class="table" style="width: 32rem;">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">User name</th>
                                 <th scope="col">Role</th>
@@ -51,12 +51,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['user_master_id'])) {
                             $i = 1;
                             while ($rows = mysqli_fetch_assoc($res)) { ?>
                                 <tr>
-                                    <th scope="row"><?= $i ?></th>
+                                    
+                                    <td><?= $rows['user_master_id'] ?></td>
                                     <td><?= $rows['name'] ?></td>
                                     <td><?= $rows['email'] ?></td>
                                     <td><?= $rows['role'] ?></td>
                                     <td>
-                                        <a class="btn btn-success evalbtn" href="../evaluation_form/create.php">Evaluate/View</a>
+                                        <a class="btn btn-success evalbtn" href="../evaluation_form/create.php?Id=<?php echo $rows['user_master_id'];?>">Evaluate/View</a>
                                     </td>
                                 </tr>
                             <?php $i++;

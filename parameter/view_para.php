@@ -54,11 +54,21 @@ include "../master/breadcrumbs.php";
                             <i class="prefix-icon anticon anticon-user"></i>
                             <input type="text" class="form-control" id="para_description" name="para_description" placeholder="para_description">
                         </div>
+                        <label class="font-weight-semibold" for="para_min_r">Parameter Min Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="para_min_r" name="para_min_r" placeholder="para_min_r">
+                        </div>
+                        <label class="font-weight-semibold" for="para_max_r">Parameter Max Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="para_max_r" name="para_max_r" placeholder="para_max_r">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="submit_para" value="submit_para">submit</button>
+                    <button type="submit" class="btn btn-primary" name="submit_para" value="submit_para">Submit</button>
                 </div>
             </form>
         </div>
@@ -88,6 +98,16 @@ include "../master/breadcrumbs.php";
                         <div class="input-affix">
                             <i class="prefix-icon anticon anticon-user"></i>
                             <input type="text" class="form-control" id="update_para_description" name="update_para_description" placeholder="update_para_description">
+                        </div>
+                        <label class="font-weight-semibold" for="update_para_min_r">Parameter Min Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="update_para_min_r" name="update_para_min_r" placeholder="update_para_min_r">
+                        </div>
+                        <label class="font-weight-semibold" for="update_para_max_r">Parameter Max Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="update_para_max_r" name="update_para_max_r" placeholder="update_para_max_r">
                         </div>
                     </div>
                 </div>
@@ -137,6 +157,8 @@ include "../master/breadcrumbs.php";
                         <th scope="col">Parameter Id</th>
                         <th scope="col">Parameter Title</th>
                         <th scope="col">Parameter Description</th>
+                        <th scope="col">Parameter Min Rating</th>
+                        <th scope="col">Parameter Max Rating</th>
                         <th scope="col">Action</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -154,6 +176,8 @@ include "../master/breadcrumbs.php";
                             <td><?= $rows['para_id'] ?></td>
                             <td><?= $rows['para_title'] ?></td>
                             <td><?= $rows['para_description'] ?></td>
+                            <td><?= $rows['min_rating'] ?></td>
+                            <td><?= $rows['max_rating'] ?></td>
                             <td>
                                 <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#paraeditModal">EDIT</button>
                             </td>
@@ -192,6 +216,8 @@ include "../master/breadcrumbs.php";
                 $('#update_para_id').val(data[0]);
                 $('#update_para_title').val(data[1]);
                 $('#update_para_description').val(data[2]);
+                $('#update_para_min_r').val(data[3]);
+                $('#update_para_max_r').val(data[4]);
 
             });
 

@@ -55,6 +55,16 @@ include "../master/breadcrumbs.php";
                             <i class="prefix-icon anticon anticon-user"></i>
                             <input type="text" class="form-control" id="para_description" name="para_description" placeholder="para_description">
                         </div>
+                        <label class="font-weight-semibold" for="para_min_r">Parameter Min Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="para_min_r" name="para_min_r" placeholder="para_min_r">
+                        </div>
+                        <label class="font-weight-semibold" for="para_max_r">Parameter Max Rate:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <input type="text" class="form-control" id="para_max_r" name="para_max_r" placeholder="para_max_r">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
